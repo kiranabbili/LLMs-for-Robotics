@@ -237,9 +237,11 @@ def main():
                 break
             print("Processing...")
             try:
-                res = agent.invoke(msg)[0]
+                res = agent.invoke(msg)
                 if isinstance(res, dict) and "text" in res:
                     print(res["text"])
+                elif isinstance(res,dict) and len(res)>0 and isinstance(res[0],dict) and "text" in res[0]:
+                    print(res[0]["text"])
                 else:
                     print(res)
             except Exception as e:
@@ -253,3 +255,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+   
+
+
+  
+    
